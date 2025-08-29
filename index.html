@@ -510,14 +510,14 @@
                 <div class="chart-container">
                     <canvas id="costChart"></canvas>
                 </div>
-                <div class="savings-text" id="savingsText">You save <span class="savings-amount" id="savingsAmount">₹0</span></div>
+                <div class="savings-text" id="savingsText">You save <span class="savings-amount" id="savingsAmount">₹0</span> every year.</div>
             </div>
             <div class="chart-tile">
                 <!-- <h3>Emissions Comparison</h3> -->
                 <div class="chart-container">
                     <canvas id="emissionsChart"></canvas>
                 </div>
-                <div class="emissions-text" id="emissionsText">Your emissions are reduced by <span class="emissions-percentage" id="emissionsReduction">0%</span></div>
+                <div class="emissions-text" id="emissionsText">Your annual emissions are reduced by <span class="emissions-percentage" id="emissionsReduction">0%</span></div>
             </div>
         </div>
     </div>
@@ -752,9 +752,9 @@
                 const annualCostSavings = (coalPoweredCostPerMonth - reCostPerMonth) * 12;
                 
                 // Emissions
-                const emissionsForCoalPowered = energyRequiredPerDay * 0.03 * gridPerUnitEmissions;
-                const emissionsForRePowered = (energyRequiredPerDay * 0.03 * windPerUnitEmissions * (1 - solarPercentage)) +
-                                             (energyRequiredPerDay * 0.03 * solarPerUnitEmissions * solarPercentage);
+                const emissionsForCoalPowered = energyRequiredPerDay * 0.365 * gridPerUnitEmissions;
+                const emissionsForRePowered = (energyRequiredPerDay * 0.365 * windPerUnitEmissions * (1 - solarPercentage)) +
+                                             (energyRequiredPerDay * 0.365 * solarPerUnitEmissions * solarPercentage);
                 const percentageDecreaseInEmissions = ((emissionsForCoalPowered - emissionsForRePowered) / emissionsForCoalPowered) * 100;
 
                 // Update displays
@@ -783,7 +783,7 @@
                 costChart = new Chart(costCtx, {
                     type: 'bar',
                     data: {
-                        labels: ['Coal Powered', 'RE Powered'],
+                        labels: ['Coal Powered', 'Renewable Energy Powered'],
                         datasets: [{
                             data: [coalCost, reCost],
                             backgroundColor: ['#626F47', '#A4B465'],
@@ -834,7 +834,7 @@
                 emissionsChart = new Chart(emissionsCtx, {
                     type: 'bar',
                     data: {
-                        labels: ['Coal Powered', 'RE Powered'],
+                        labels: ['Coal Powered', 'Renewable Energy Powered'],
                         datasets: [{
                             data: [coalEmissions, reEmissions],
                             backgroundColor: ['#626F47', '#A4B465'],
