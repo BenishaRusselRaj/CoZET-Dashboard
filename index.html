@@ -800,8 +800,16 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false }
+                            legend: { display: false },
+                            tooltip: {
+                                enabled: true,
+                                callbacks: {
+                                    label: function(value) {
+                                        return '₹' + numberFormat(value.parsed.y);
+                                }
+                        }},   
                         },
+                        
                         scales: {
                             y: {
                                 beginAtZero: true,
@@ -840,7 +848,7 @@
                     data: {
                         labels: ['Coal Powered', 'Renewable Energy Powered'],
                         datasets: [{
-                            data: [Math.round(coalEmissions), Math.round(reEmissions)],
+                            data: [coalEmissions, reEmissions],
                             backgroundColor: ['#626F47', '#A4B465'],
                             borderRadius: 8,
                             borderWidth: 2,
@@ -851,7 +859,14 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false }
+                            legend: { display: false },
+                            tooltip: {
+                                enabled: true,
+                                callbacks: {
+                                    label: function(value) {
+                                        return Math.round(value.parsed.y) + ' tCO₂';
+                                }
+                        }},   
                         },
                         scales: {
                             y: {
