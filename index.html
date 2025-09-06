@@ -789,7 +789,7 @@
                     data: {
                         labels: ['Coal Powered', 'Renewable Energy Powered'],
                         datasets: [{
-                            data: [coalCost, reCost],
+                            data: [Math.ceil(coalCost), Math.ceil(reCost)],
                             backgroundColor: ['#626F47', '#A4B465'],
                             borderRadius: 8,
                             borderWidth: 2,
@@ -840,7 +840,7 @@
                     data: {
                         labels: ['Coal Powered', 'Renewable Energy Powered'],
                         datasets: [{
-                            data: [coalEmissions, reEmissions],
+                            data: [Math.round(coalEmissions), Math.round(reEmissions)],
                             backgroundColor: ['#626F47', '#A4B465'],
                             borderRadius: 8,
                             borderWidth: 2,
